@@ -2,9 +2,9 @@
 import redis
 import ssl
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 redis_client = redis.from_url(
     os.getenv('CELERY_BROKER_URL'),
