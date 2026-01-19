@@ -1,9 +1,10 @@
 import os
 from time import time
 from datetime import timedelta
-from dotenv import load_dotenv
+import json
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 class Config:
     SECRET_KEY=os.getenv('SECRET_KEY')
 
@@ -101,7 +102,6 @@ class Config:
     ADMIN_LONG=os.getenv('ADMIN_LONG')
 
     # Firebase
-    FIREBASE_CREDENTIALS = os.path.join(
-        os.path.dirname(__file__),
-        "firebase_service_account.json"
+    FIREBASE_CREDENTIALS = json.loads(
+        os.getenv('FIREBASE_CREDENTIALS')
     )
