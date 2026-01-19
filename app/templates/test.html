@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highlight Test</title>
+
+    <style>
+        /* Style how highlighted text should look */
+        em {
+            font-style: normal;   /* remove italic */
+            font-weight: bold;
+            color: rgb(21, 255, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Search Suggestion</h3>
+
+    <!-- This simulates Meilisearch output -->
+    <div id="suggestion">
+    </div>
+    <script>
+        // Example of how to insert the suggestion into the page
+        const suggestionDiv = document.getElementById('suggestion');
+        suggestionDiv.innerHTML = "<em>Poc</em>ket Style Tee";
+    </script>
+</body>
+</html>

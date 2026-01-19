@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Placed</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background: #f2f4f8;
+      font-family: Arial, Helvetica, sans-serif;
+    "
+  >
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding: 10px">
+      <tr>
+        <td align="center">
+          <!-- CARD -->
+          <table
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            style="
+              max-width: 600px;
+              background: #ffffff;
+              border-radius: 14px;
+              overflow: hidden;
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            "
+          >
+            <!-- HEADER -->
+            <tr>
+              <td
+                style="
+                  background: linear-gradient(135deg, #6a11cb, #2575fc);
+                  padding: 25px;
+                  text-align: center;
+                  color: #ffffff;
+                "
+              >
+                <h1 style="margin: 0; font-size: 26px">🎉 Order Confirmed</h1>
+                <p style="margin: 8px 0 0; font-size: 14px; opacity: 0.9">
+                  Thanks for shopping with us!
+                </p>
+              </td>
+            </tr>
+
+            <!-- BODY -->
+            <tr>
+              <td style="padding: 20px; color: #333; font-size: 15px">
+                <p style="margin-top: 0">
+                  Hi <strong>{{ customer_name }}</strong> 👋,
+                </p>
+
+                <p>
+                  Your order has been placed successfully. We’re getting it
+                  ready for delivery 🚚
+                </p>
+
+                <!-- ORDER INFO -->
+                <table
+                  width="100%"
+                  cellpadding="10"
+                  cellspacing="0"
+                  style="
+                    background: #f9fafc;
+                    border-radius: 10px;
+                    margin: 15px 0;
+                  "
+                >
+                  <tr>
+                    <td>
+                      <strong>🧾 Order ID</strong><br />
+                      <span style="color: #555">{{ order_id }}</span>
+                    </td>
+                    <td align="right">
+                      <strong>📅 Date</strong><br />
+                      <span style="color: #555">{{ order_date }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>💳 Payment</strong><br />
+                      <span style="color: green">{{ payment_status }}</span>
+                    </td>
+                    <td align="right">
+                      <strong>💰 Total</strong><br />
+                      <span style="color: #2575fc; font-size: 18px">
+                        ₹{{ total_amount }}
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- ITEMS -->
+                <h3 style="margin: 20px 0 10px">🛍 Items</h3>
+
+                {% for item in items %}
+                <table
+                  width="100%"
+                  cellpadding="8"
+                  cellspacing="0"
+                  style="border-bottom: 1px solid #eee"
+                >
+                  <tr>
+                    <td style="font-weight: bold">{{ item.name }}</td>
+                    <td align="center">× {{ item.quantity }}</td>
+                    <td align="right">₹{{ item.price }}</td>
+                  </tr>
+                </table>
+                {% endfor %}
+
+                <!-- ADDRESS -->
+                <h3 style="margin: 20px 0 10px">📦 Shipping Address</h3>
+                <div
+                  style="
+                    background: #f9fafc;
+                    padding: 12px;
+                    border-radius: 10px;
+                    line-height: 1.6;
+                  "
+                >
+                  {{ shipping_address }}
+                </div>
+
+                <!-- CTA -->
+                <div style="text-align: center; margin: 30px 0">
+                  <a
+                    href="{{ order_tracking_url }}"
+                    style="
+                      background: linear-gradient(135deg, #ff512f, #dd2476);
+                      color: #ffffff;
+                      padding: 14px 30px;
+                      font-size: 16px;
+                      text-decoration: none;
+                      border-radius: 30px;
+                      display: inline-block;
+                    "
+                  >
+                    📍 Track Your Order
+                  </a>
+                </div>
+
+                <!-- SUPPORT -->
+                <p style="font-size: 14px; color: #666; text-align: center">
+                  Need help? Reply to this email or contact support.
+                </p>
+              </td>
+            </tr>
+
+            <!-- FOOTER -->
+            <tr>
+              <td
+                style="
+                  background: #f9fafc;
+                  padding: 15px;
+                  text-align: center;
+                  font-size: 12px;
+                  color: #888;
+                "
+              >
+                © {{ year }} {{ company_name }} <br />
+                Made with ❤️ in India
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

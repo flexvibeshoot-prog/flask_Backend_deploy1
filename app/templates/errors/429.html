@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Too Many Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 420px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 72px;
+            margin: 0;
+        }
+        p {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        .retry {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: white;
+            color: #ff416c;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>429</h1>
+        <p>Too Many Requests</p>
+        <p>You’re sending requests too fast 🚦</p>
+
+        {% if retry_after %}
+            <p class="retry">Try again in {{ retry_after }} seconds</p>
+        {% endif %}
+
+        <a class="btn" href="/">Go Home</a>
+    </div>
+</body>
+</html>
