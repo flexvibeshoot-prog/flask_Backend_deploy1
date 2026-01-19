@@ -1,0 +1,46 @@
+# ===== Python general =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.log
+
+# ===== Virtual environment =====
+venv/
+myenv/
+env/
+.venv/
+
+# ===== Flask specific =====
+instance/
+*.db
+*.sqlite3
+
+# ===== IDE / Editor files =====
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ===== Environment & Config files =====
+.env
+*.pem
+*.crt
+*.key
+
+# ===== Cache & build =====
+dist/
+build/
+*.egg
+*.bak
+
+# ===== Jupyter notebooks =====
+.ipynb_checkpoints/
+
+# ===== Node / React if full-stack =====
+node_modules/
+build/
