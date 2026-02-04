@@ -30,6 +30,10 @@ def tests():
 
     return jsonify({"status": "tasks queued"})
 
+@main.route("/ping")
+def ping():
+    return {"status": "awake"}, 200
+
 # @main.route('/testdb')
 # def test_db():
 #     try:
