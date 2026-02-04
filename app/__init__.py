@@ -14,12 +14,14 @@ from flask_limiter.util import get_remote_address
 from flask_socketio import SocketIO,join_room,disconnect,emit
 import firebase_admin
 from firebase_admin import credentials
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
 
 db = SQLAlchemy()
 jwt = JWTManager()
 mail=Mail()
 migrate=Migrate()
-Schudule=APScheduler()
+# Schudule=BackgroundScheduler()
 
 # function for rate-limiter 
 # def user_rate_limit():
@@ -51,8 +53,8 @@ def create_app():
     
     mail.init_app(app)
     migrate.init_app(app,db)
-    # Schudule.init_app(app)
-    # Schudule.start()
+    Schudule=BackgroundScheduler()
+    Schudule.start()
     CORS(app,supports_credentials=True,origins='*')
     
 
@@ -125,10 +127,11 @@ def create_app():
     from app.btask import delete_unverified_users
     # Run the job every 24 hours
     Schudule.add_job(
-        id='cleanup_task',
-        func=lambda: delete_unverified_users(app),
-        trigger='interval',
-        hours=24
+        func=delete_unverified_users,
+        trigger=IntervalTrigger(hours=24),
+        args=[app],
+        id="cleanup_unverified_users",
+        replace_existing=True
     )
 
     # 🔥 Custom 429 error handler
